@@ -3,7 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://spaceboundr.github.io/2019/helloworld/</loc>
+      
+      <lastmod>2019-03-29T02:09:00+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://spaceboundr.github.io/about/</loc>
+      
+      <lastmod>2019-03-28T14:06:14+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://spaceboundr.github.io/categories/</loc>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://spaceboundr.github.io/tags/helloworld/</loc>
+      
+      <lastmod>2019-03-29T02:09:00+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://spaceboundr.github.io/posts/</loc>
+      
+      <lastmod>2019-03-29T02:09:00+08:00</lastmod>
       
       
       
@@ -15,6 +59,8 @@
     <url>
       <loc>https://spaceboundr.github.io/</loc>
       
+      <lastmod>2019-03-29T02:09:00+08:00</lastmod>
+      
       
       
       <priority>0</priority>
@@ -24,6 +70,20 @@
   
     <url>
       <loc>https://spaceboundr.github.io/tags/</loc>
+      
+      <lastmod>2019-03-29T02:09:00+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://spaceboundr.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
+      
+      <lastmod>2019-03-29T02:09:00+08:00</lastmod>
       
       
       
