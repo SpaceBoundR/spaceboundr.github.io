@@ -63,4 +63,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://github.com/SpaceBoundR/sitemap.xml
+Sitemap: https://spaceboundr.github.io/sitemap.xml
