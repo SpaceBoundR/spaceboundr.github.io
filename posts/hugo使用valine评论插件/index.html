@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="SpaceBound">
+  
+  
+  
+  <link rel="prev" href="https://spaceboundr.github.io/posts/helloworld/" />
+  
+  <link rel="canonical" href="https://spaceboundr.github.io/posts/hugo%E4%BD%BF%E7%94%A8valine%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           HuGo使用Valine评论插件 | SpaceBound
+       
+  </title>
+  <meta name="title" content="HuGo使用Valine评论插件 | SpaceBound">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://spaceboundr.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "HuGo使用Valine评论插件",
+    "headline" : "HuGo使用Valine评论插件",
+    "description" : "HuGo使用Valine评论插件",
+    "inLanguage" : "en-us",
+    "author" : "SpaceBound",
+    "creator" : "SpaceBound",
+    "publisher": "SpaceBound",
+    "accountablePerson" : "SpaceBound",
+    "copyrightHolder" : "SpaceBound",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-31 02:09:00 &#43;0800 CST",
+    "dateModified" : "2019-03-31 02:09:00 &#43;0800 CST",
+    "url" : "https://spaceboundr.github.io/posts/hugo%E4%BD%BF%E7%94%A8valine%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/",
+    "wordCount" : "15",
+    "keywords" : [ "HuGo","Valine", "SpaceBound"]
+}
+</script>
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://spaceboundr.github.io/">SpaceBound</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://spaceboundr.github.io/">SpaceBound</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">HuGo使用Valine评论插件</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://spaceboundr.github.io/" rel="author">SpaceBound</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-31 itemprop="datePublished">March 31, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://spaceboundr.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>&emsp;&emsp;博客需要一个评论插件，网上搜索过后发现<a href="https://valine.js.org/" rel="nofollow noreferrer" target="_blank">Valine</a>就是我想要的。</p>
+
+<blockquote>
+<p>Valine - 一款快速、简洁且高效的无后端评论系统。<br />
+Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。<br />
+理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。</p>
+</blockquote>
+
+<p>&emsp;&emsp;Valine官网上有详细的使用教程，只需要</p>
+
+<ol>
+<li>注册Leancloud账户，创建应用，获取APP ID和APP Key</li>
+<li>将html和js代码插入博客模板相应位置
+<img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190331/TIM-20190331222611.png"></li>
+<li>重新发布HuGo即可看到评论功能<br /></li>
+</ol>
+
+<p>&emsp;&emsp;快来文章末尾评论吧！</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>SpaceBound </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://spaceboundr.github.io/posts/hugo%E4%BD%BF%E7%94%A8valine%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/>https://spaceboundr.github.io/posts/hugo%E4%BD%BF%E7%94%A8valine%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/hugo/">
+                    #HuGo</a></span>
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/valine/">
+                    #Valine</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://spaceboundr.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://spaceboundr.github.io/posts/helloworld/" class="prev" rel="prev" title="Hello World"><i class="iconfont icon-left"></i>&nbsp;Hello World</a>
+         
+        
+    </div>
+
+    <div id="vcomments" class="post-comment">
+          
+                 
+          
+    </div>
+    <script>
+        new Valine({
+            el: '#vcomments' ,
+            appId: 'mMBQEA9VgpA1vsJRzsItn628-gzGzoHsz',
+            appKey: '7NWpzfy7UbSeCbLijdFTNX5P',
+            notify:false, 
+            verify:false, 
+            avatar:'mm', 
+            placeholder: 'just go go',
+            verify:true
+        })
+    </script>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://spaceboundr.github.io/">SpaceBound</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
