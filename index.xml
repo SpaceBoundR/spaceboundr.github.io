@@ -23,11 +23,14 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&amp;emsp;&amp;emsp;Valine官网上有详细的使用教程，只需要&lt;br /&gt;
-1. 注册Leancloud账户，创建应用，获取APP ID和APP Key
-1. 将html和js代码插入博客模板相应位置
-&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190331/TIM-20190331222611.png&#34;&gt;
-1. 重新发布HuGo即可看到评论功能&lt;/p&gt;
+&lt;p&gt;&amp;emsp;&amp;emsp;Valine官网上有详细的使用教程，只需要&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;注册Leancloud账户，创建应用，获取APP ID和APP Key&lt;/li&gt;
+&lt;li&gt;将html和js代码插入博客模板相应位置
+&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190331/TIM-20190331222611.png&#34;&gt;&lt;/li&gt;
+&lt;li&gt;重新发布HuGo即可看到评论功能&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&amp;emsp;&amp;emsp;快来文章末尾评论吧！&lt;/p&gt;
 </description>
