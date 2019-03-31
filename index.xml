@@ -6,8 +6,32 @@
     <description>Recent content in SpaceBound on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Mar 2019 02:09:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 31 Mar 2019 02:09:00 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HuGo使用Valine评论插件</title>
+      <link>https://spaceboundr.github.io/posts/hugo%E4%BD%BF%E7%94%A8valine%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Sun, 31 Mar 2019 02:09:00 +0800</pubDate>
+      
+      <guid>https://spaceboundr.github.io/posts/hugo%E4%BD%BF%E7%94%A8valine%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</guid>
+      <description>&lt;p&gt;&amp;emsp;&amp;emsp;博客需要一个评论插件，网上搜索过后发现&lt;a href=&#34;https://valine.js.org/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Valine&lt;/a&gt;就是我想要的。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Valine - 一款快速、简洁且高效的无后端评论系统。&lt;br /&gt;
+Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。&lt;br /&gt;
+理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;emsp;&amp;emsp;Valine官网上有详细的使用教程，只需要
+1. 注册Leancloud账户，创建应用，获取APP ID和APP Key
+1. 将html和js代码插入博客模板相应位置
+&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190331/TIM-20190331222611.png&#34;&gt;
+1. 重新发布HuGo即可看到评论功能&lt;/p&gt;
+
+&lt;p&gt;&amp;emsp;&amp;emsp;快来文章末尾评论吧！&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hello World</title>
@@ -16,7 +40,7 @@
       
       <guid>https://spaceboundr.github.io/posts/helloworld/</guid>
       <description>&lt;p&gt;&amp;emsp;&amp;emsp;Hello World！你好 世界！&lt;br /&gt;
-&amp;emsp;&amp;emsp;在以往的日子里不知道写过多少个Hello World,这个博客对我来说也是一个新的开始，我会坚持把这个博客写下去，记录生活，分享知识。&lt;br /&gt;
+&amp;emsp;&amp;emsp;在以往的日子里不知道写过多少个Hello World，这个博客对我来说也是一个新的开始，我会坚持把这个博客写下去，记录生活，分享知识。&lt;br /&gt;
 &amp;emsp;&amp;emsp;我是召唤兽。&lt;br /&gt;
 &amp;emsp;&amp;emsp;-2019.03.29 02:09 于KM
 &lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190329/20190329020700.jpg&#34; width=&#34;450&#34; height=&#34;450&#34;&gt;&lt;/p&gt;

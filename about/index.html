@@ -66,6 +66,10 @@
 }
 </script>
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
 </head>
 
   
@@ -157,6 +161,24 @@
 </ul>
 
     </div>
+    <div style="margin-bottom: 25px;">
+
+    </div>
+    <div id="vcomments" class="post-comment">
+       
+     </div>
+  <script>
+      new Valine({
+          el: '#vcomments' ,
+          appId: 'mMBQEA9VgpA1vsJRzsItn628-gzGzoHsz',
+          appKey: '7NWpzfy7UbSeCbLijdFTNX5P',
+          notify:false, 
+          verify:false, 
+          avatar:'retro', 
+          placeholder: 'just go go',
+          verify:true
+      })
+  </script>
 </div>
 
           </div>
