@@ -6,17 +6,26 @@
     <description>Recent content in Posts on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Mar 2019 02:09:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Apr 2019 13:15:00 +0800</lastBuildDate>
     
 	<atom:link href="https://spaceboundr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>认真改变世界</title>
+      <link>https://spaceboundr.github.io/posts/change-the-world-seriously/</link>
+      <pubDate>Fri, 12 Apr 2019 13:15:00 +0800</pubDate>
+      
+      <guid>https://spaceboundr.github.io/posts/change-the-world-seriously/</guid>
+      <description> &amp;ndash; 2018.4.21 于云南昆明M60创意园南域之声 </description>
+    </item>
+    
+    <item>
       <title>HuGo使用Valine评论插件</title>
-      <link>https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin/</link>
+      <link>https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/</link>
       <pubDate>Sun, 31 Mar 2019 02:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin/</guid>
+      <guid>https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/</guid>
       <description>&amp;emsp;&amp;emsp;博客需要一个评论插件，网上搜索过后发现Valine就是我想要的。
  Valine - 一款快速、简洁且高效的无后端评论系统。
 Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。
