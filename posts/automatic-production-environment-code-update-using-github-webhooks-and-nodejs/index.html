@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="SpaceBound">
+  
+  
+  
+  <link rel="prev" href="https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/" />
+  
+  <link rel="canonical" href="https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新 | SpaceBound
+       
+  </title>
+  <meta name="title" content="使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新 | SpaceBound">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://spaceboundr.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新",
+    "headline" : "使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新",
+    "description" : "使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新",
+    "inLanguage" : "en-us",
+    "author" : "SpaceBound",
+    "creator" : "SpaceBound",
+    "publisher": "SpaceBound",
+    "accountablePerson" : "SpaceBound",
+    "copyrightHolder" : "SpaceBound",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-04-14 12:23:00 &#43;0800 CST",
+    "dateModified" : "2019-04-14 12:23:00 &#43;0800 CST",
+    "url" : "https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/",
+    "wordCount" : "243",
+    "keywords" : [ "HuGo","HuGo自动化部署","WebHooks","NodeJs","Github","Nginx", "SpaceBound"]
+}
+</script>
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://spaceboundr.github.io/">SpaceBound</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://spaceboundr.github.io/">SpaceBound</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://spaceboundr.github.io/" rel="author">SpaceBound</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-04-14 itemprop="datePublished">April 14, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://spaceboundr.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+                 ♥  <span id="busuanzi_value_page_pv"></span> Hits
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>最近为博客申请了一个域名<a href="https://www.spacebound.xyz" rel="nofollow noreferrer" target="_blank">spacebound.xyz</a>还在备案中，等备案完成就能通过域名访问本站，刚好手上有一台闲置的腾讯云服务器，就考虑将博客代码部署到服务器上。<br />
+服务器选择的是windows环境，<del>.Net程序员后遗症+对Linux不熟</del> 使用<code>Nginx</code>部署静态网站。按照传统的方式，在本地编辑、发布成静态资源以后还要远程桌面或者ftp/sftp上传至服务器，这样做太过麻烦，我想要更加自动化的方式实现。<br />
+经过一番资料查找后发现<a href="https://developer.github.com/webhooks/" rel="nofollow noreferrer" target="_blank">GitHub的<code>WebHooks</code></a>可以很方便的实现代码自动化管理，只要在GitHub相应库中设置好WebHooks，服务端使用<code>NodeJs</code>来构Webhook服务，就可以轻松的实现<strong>提交git时服务器自动更新代码完成部署</strong>。<br />
+具体实现如下：</p>
+
+<h2 id="github的webhooks设置">GitHub的WebHooks设置</h2>
+
+<p>打开你要进行自动化部署的项目的GiHub仓库地址，进入Settings设置页面，点击左侧的Webhooks<br />
+<img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/2019041401.png">
+点击Add webhook，添加一个webhook
+<img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/2019041402.png">
+<code>Payload URL</code> 填写你项目的域名或服务器IP地址加端口号，例如： <strong>https：www.spacebound.xyz:6666</strong><br />
+<code>Content type</code> 选择application/json<br />
+<code>Secret</code> webhook请求时在head中附加的密钥，之后会使用到<strong>需记住</strong>。例如： <strong>test6666</strong></p>
+
+<h2 id="服务端使用nodejs构建webhook服务">服务端使用NodeJs构建WebHook服务</h2>
+
+<h3 id="创建nodejs服务">创建NodeJs服务</h3>
+
+<p>服务器需要安装<code>NodeJs</code>，然后执行命令</p>
+
+<pre><code class="language-npm">npm install http-server -g
+npm install github-webhook-handler -g
+</code></pre>
+
+<p>来安装http-server和github-webhook-handler中间件，在项目根目录下新建<code>webhook.js</code></p>
+
+<pre><code class="language-nodejs">var http = require('http')
+var createHandler = require('github-webhook-handler')
+var handler = createHandler({ path: '/', secret: 'test6666' })
+// 上面的 secret 保持和 GitHub 后台设置的一致
+http.createServer(function (req, res) {
+  handler(req, res, function (err) {
+    res.statusCode = 404
+    res.end('no such location')
+  })
+}).listen(6666)
+//监听6666端口
+handler.on('error', function (err) {
+  console.error('Error:', err.message)
+})
+handler.on('push', function (event) {
+  console.log('Received a push event for %s to %s',
+    event.payload.repository.name,
+    event.payload.ref);
+	
+  const spawn = require('child_process').spawn;
+    //const cmd = 'git pull origin master';
+    //const p = spawn(cmd, [], {shell: true});
+    const p = spawn('deploy.sh', [], {shell: true})
+
+  p.stdout.on ('data', (data) =&gt; {
+		console.log (data.toString ());
+	});
+})
+</code></pre>
+
+<p>其中</p>
+
+<pre><code class="language-nodejs">const spawn = require('child_process').spawn;
+    //const cmd = 'git pull origin master';
+    //const p = spawn(cmd, [], {shell: true});
+    const p = spawn('deploy.sh', [], {shell: true})
+
+  p.stdout.on ('data', (data) =&gt; {
+		console.log (data.toString ());
+	});
+</code></pre>
+
+<p><br/></p>
+
+<blockquote>
+<p>这个部分是使用NodeJs的子进程<a href="http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options" rel="nofollow noreferrer" target="_blank">child_process</a>来执行shell脚本。这个地方踩了很多坑，由于对NodeJs不是很熟只能现学现用，官方API虽然对这个方法参数名有详细注解，但对于实际参数怎么写没有提供示例。<br />
+百度上查到的教程和例子都千篇一律 <del><strong>强烈吐槽百度</strong></del>，只有介绍shell基础命令怎么使用，没有关于git命令和调用.sh文件的示例。最后还是在<code>stackoverflow</code>上的相关问题中找到了<a href="https://stackoverflow.com/questions/9777215/running-a-shell-command-from-node-js-without-buffering-output" rel="nofollow noreferrer" target="_blank">答案</a>。</p>
+</blockquote>
+
+<h3 id="创建shell脚本">创建Shell脚本</h3>
+
+<p>先在网站根目录创建Git文件控制，添加远程Git仓库地址</p>
+
+<pre><code class="language-sh">#!/bin/bash
+git init
+git remote add origin https://xxx.git 
+</code></pre>
+
+<p>然后创建<code>deploy.sh</code>，和<code>webhook.js</code>处于同一目录下</p>
+
+<pre><code class="language-sh">#!/bin/bash
+echo &quot;start deployment&quot;
+git pull origin master
+git reset --hard master
+echo &quot;done&quot;
+</code></pre>
+
+<p>到这里就可以使用<code>nodejs webhook.js</code>命令将服务启动。</p>
+
+<h2 id="使用pm2进行进程守护">使用pm2进行进程守护</h2>
+
+<p>PM2是node进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，如性能监控、自动重启、负载均衡等，而且使用非常简单。<a href="http://www.cnblogs.com/chyingp/p/pm2-documentation.html" rel="nofollow noreferrer" target="_blank">引用</a></p>
+
+<h3 id="pm2安装">pm2安装</h3>
+
+<p>执行命令</p>
+
+<pre><code class="language-npm">npm i pm2 -g
+</code></pre>
+
+<p>启动</p>
+
+<pre><code class="language-npm">pm2 start webhook.js --watch -i 2
+</code></pre>
+
+<h3 id="pm2在windows服务器下开启自动开启服务">pm2在windows服务器下开启自动开启服务</h3>
+
+<p>在安装好pm2的基础上，执行命令安装pm2-windows-service和pm2-windows-startup中间件</p>
+
+<pre><code class="language-nodejs">npm install pm2-windows-service -g
+npm install pm2-windows-startup -g
+</code></pre>
+
+<p>添加.pm2的系统环境变量</p>
+
+<pre><code class="language-cmd">PM2_HOME=C:\Users\Administrator\.pm2(路径默认在当前用户下的.pm2)
+</code></pre>
+
+<p>以管理员身份运行cmd,执行以下命令安装服务</p>
+
+<pre><code class="language-npm">pm2-service-install
+</code></pre>
+
+<p>提示Perform environment setup?时选n，回车继续。此时PM2服务已安装成功并已启动，（如果没启动请自行到Windows服务处启动服务）名称为PM2<br />
+<img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/pm2-20190414114939.png"><br />
+打开cmd，移动到项目更目录下，执行命令</p>
+
+<pre><code class="language-npm">pm2 start webhook.js -n myBlog
+pm2 save
+</code></pre>
+
+<p><img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/PM2-20190414115636.png"><br />
+<code>pm2 save</code> 十分重要, 它保存当前pm2正在管理的NodeJS服务, 并在开机后恢复这些服务，保存路径为系统环境变量设置的PM2_HOME路径。
+<img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/pm2-20190414112729.png"><br />
+重启服务器后输入命令查看pm2列表，发现myBlog服务已启动，至此，开机自动启动配置完成。</p>
+
+<pre><code class="language-npm">pm2 list
+</code></pre>
+
+<p><img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/pm2-20190414120232.png"><br />
+<br/></p>
+
+<blockquote>
+<p><strong>结束语：</strong>该项<code>hook</code>技术不仅适用于Github、Gitlab、Gitee等线在上仓库，也可以在自己搭建的git服务器实现，在实际的项目中使用可以达到生产环境代码自动部署的目的。动手过程中有什么不清楚的地方可以在文章下方留言或者微信联系我，共同讨论 ：)</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>SpaceBound </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/hugo/">
+                    #HuGo</a></span>
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/hugo%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">
+                    #HuGo自动化部署</a></span>
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/webhooks/">
+                    #WebHooks</a></span>
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/nodejs/">
+                    #NodeJs</a></span>
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/github/">
+                    #Github</a></span>
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/nginx/">
+                    #Nginx</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://spaceboundr.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/" class="prev" rel="prev" title="使用Shell命令生成HuGo网站并提交至GitHub"><i class="iconfont icon-left"></i>&nbsp;使用Shell命令生成HuGo网站并提交至GitHub</a>
+         
+        
+    </div>
+
+    <div id="vcomments" class="post-comment">
+          
+                 
+          
+    </div>
+    <script>
+        new Valine({
+            el: '#vcomments' ,
+            appId: 'mMBQEA9VgpA1vsJRzsItn628-gzGzoHsz',
+            appKey: '7NWpzfy7UbSeCbLijdFTNX5P',
+            avatar:'retro', 
+            placeholder: 'just go go',
+            verify:true,
+            notify:true
+        })
+    </script>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://spaceboundr.github.io/">SpaceBound</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span class="with-love">
+            <i class="iconfont icon-love"></i> 
+             </span>
+        <span>Total <span id="busuanzi_value_site_pv"></span> views</span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

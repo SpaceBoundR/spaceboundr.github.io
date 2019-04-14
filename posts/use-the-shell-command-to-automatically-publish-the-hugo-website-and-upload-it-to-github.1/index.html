@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://spaceboundr.github.io/posts/hello-world/" />
-  <link rel="next" href="https://spaceboundr.github.io/posts/change-the-world-seriously/" />
-  <link rel="canonical" href="https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/" />
+  <link rel="prev" href="https://spaceboundr.github.io/posts/change-the-world-seriously/" />
+  <link rel="next" href="https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/" />
+  <link rel="canonical" href="https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           HuGo使用Valine评论插件 | SpaceBound
+           使用Shell命令生成HuGo网站并提交至GitHub | SpaceBound
        
   </title>
-  <meta name="title" content="HuGo使用Valine评论插件 | SpaceBound">
+  <meta name="title" content="使用Shell命令生成HuGo网站并提交至GitHub | SpaceBound">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https://spaceboundr.github.io/"
     },
     "articleSection" : "posts",
-    "name" : "HuGo使用Valine评论插件",
-    "headline" : "HuGo使用Valine评论插件",
-    "description" : "HuGo使用Valine评论插件",
+    "name" : "使用Shell命令生成HuGo网站并提交至GitHub",
+    "headline" : "使用Shell命令生成HuGo网站并提交至GitHub",
+    "description" : "HuGo自动化部署",
     "inLanguage" : "en-us",
     "author" : "SpaceBound",
     "creator" : "SpaceBound",
@@ -54,11 +54,11 @@
     "accountablePerson" : "SpaceBound",
     "copyrightHolder" : "SpaceBound",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-31 02:09:00 &#43;0800 CST",
-    "dateModified" : "2019-03-31 02:09:00 &#43;0800 CST",
-    "url" : "https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/",
-    "wordCount" : "15",
-    "keywords" : [ "HuGo","Valine", "SpaceBound"]
+    "datePublished": "2019-04-13 14:09:00 &#43;0800 CST",
+    "dateModified" : "2019-04-13 14:09:00 &#43;0800 CST",
+    "url" : "https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/",
+    "wordCount" : "61",
+    "keywords" : [ "HuGo","HuGo自动化部署","Shell", "SpaceBound"]
 }
 </script>
 
@@ -120,11 +120,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">HuGo使用Valine评论插件</h1>
+        <h1 class="post-title" itemprop="name headline">使用Shell命令生成HuGo网站并提交至GitHub</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://spaceboundr.github.io/" rel="author">SpaceBound</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-03-31 itemprop="datePublished">March 31, 2019</time>
+                on <time datetime=2019-04-13 itemprop="datePublished">April 13, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -139,8 +139,6 @@
         
 
         
-            
-        
 
         
         
@@ -153,24 +151,37 @@
           
           
 
-          <p>&emsp;&emsp;博客需要一个评论插件，网上搜索过后发现<a href="https://valine.js.org/" rel="nofollow noreferrer" target="_blank">Valine</a>就是我想要的。</p>
+          <p>在blog目录新建一个deploy.sh文件，将生成和上传的命令写在文件里，每次写完文章，直接运行deploy.sh即可。<br />
+例如我的deploy.sh</p>
 
-<blockquote>
-<p>Valine - 一款快速、简洁且高效的无后端评论系统。<br />
-Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。<br />
-理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。</p>
-</blockquote>
+<pre><code class="language-shell">#!/bin/bash
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+#移动到public
+cd public
+#删除public中除了.git的其他内容
+rm -rf `ls |egrep -v '(.git)'`
+#移动到上一层，执行hugo命令生成静态网站
+cd ..
+hugo -t LeaveIt  
+#将README.md文件移动到public中
+cp README.md public
+#移动到public
+cd public
+#执行git命令上传至github
+git add .
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+git push origin master
+cd ..
+</code></pre>
 
-<p>&emsp;&emsp;Valine官网上有详细的使用教程，只需要进行相应配置</p>
+<p>使用</p>
 
-<ol>
-<li>注册Leancloud账户，创建应用，获取APP ID和APP Key</li>
-<li>将html和js代码插入博客相应位置
-<img src="https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190331/TIM-20190331222611.png"></li>
-<li>重新发布HuGo即可看到评论功能<br /></li>
-</ol>
-
-<p>&emsp;&emsp;快来文章末尾评论吧！</p>
+<pre><code class="language-cmd">deploy.sh &quot;message&quot;
+</code></pre>
 
     </div>
 
@@ -185,7 +196,7 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/>https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/</span>
+                    <a href=https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</span>
             </p>
             
              
@@ -204,8 +215,11 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
             <span class="tag"><a href="https://spaceboundr.github.io/tags/hugo/">
                     #HuGo</a></span>
             
-            <span class="tag"><a href="https://spaceboundr.github.io/tags/valine/">
-                    #Valine</a></span>
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/hugo%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">
+                    #HuGo自动化部署</a></span>
+            
+            <span class="tag"><a href="https://spaceboundr.github.io/tags/shell/">
+                    #Shell</a></span>
             
             </section>
         
@@ -217,10 +231,10 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 
     <div class="post-nav">
         
-        <a href="https://spaceboundr.github.io/posts/hello-world/" class="prev" rel="prev" title="Hello World"><i class="iconfont icon-left"></i>&nbsp;Hello World</a>
+        <a href="https://spaceboundr.github.io/posts/change-the-world-seriously/" class="prev" rel="prev" title="认真改变世界"><i class="iconfont icon-left"></i>&nbsp;认真改变世界</a>
          
         
-        <a href="https://spaceboundr.github.io/posts/change-the-world-seriously/" class="next" rel="next" title="认真改变世界">认真改变世界&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/" class="next" rel="next" title="使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新">使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
@@ -277,9 +291,8 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 
 
     
-     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
-      
-     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
     
   
 

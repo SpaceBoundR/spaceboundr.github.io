@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on SpaceBound</title>
-    <link>https://spaceboundr.github.io/posts/</link>
-    <description>Recent content in Posts on SpaceBound</description>
+    <title>HuGo自动化部署 on SpaceBound</title>
+    <link>https://spaceboundr.github.io/tags/hugo%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</link>
+    <description>Recent content in HuGo自动化部署 on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Apr 2019 12:23:00 +0800</lastBuildDate>
     
-	<atom:link href="https://spaceboundr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://spaceboundr.github.io/tags/hugo%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -40,42 +40,6 @@ var http = require(&#39;http&#39;) var createHandler = require(&#39;github-webho
 例如我的deploy.sh
 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; #移动到public cd public #删除public中除了.git的其他内容 rm -rf `ls |egrep -v &#39;(.git)&#39;` #移动到上一层，执行hugo命令生成静态网站 cd .. hugo -t LeaveIt #将README.md文件移动到public中 cp README.md public #移动到public cd public #执行git命令上传至github git add . msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi git commit -m &amp;quot;$msg&amp;quot; git push origin master cd ..  使用
 deploy.sh &amp;quot;message&amp;quot;  </description>
-    </item>
-    
-    <item>
-      <title>认真改变世界</title>
-      <link>https://spaceboundr.github.io/posts/change-the-world-seriously/</link>
-      <pubDate>Fri, 12 Apr 2019 13:15:00 +0800</pubDate>
-      
-      <guid>https://spaceboundr.github.io/posts/change-the-world-seriously/</guid>
-      <description>&amp;ndash; 2018.4.21 于云南昆明M60创意园南域之声</description>
-    </item>
-    
-    <item>
-      <title>使用Valine评论系统</title>
-      <link>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</link>
-      <pubDate>Sun, 31 Mar 2019 02:09:00 +0800</pubDate>
-      
-      <guid>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</guid>
-      <description>博客需要一个评论插件，网上搜索过后发现Valine就是我想要的。
- Valine - 一款快速、简洁且高效的无后端评论系统。
-Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。
-理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。
- Valine官网上有详细的使 用教程，只需要进行相应配置
- 注册Leancloud账户，创建应用，获取APP ID和APP Key 将html和js代码插入博客相应位置  重新发布HuGo即可看到评论功能
-  快来文章末尾评论吧！</description>
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>https://spaceboundr.github.io/posts/hello-world/</link>
-      <pubDate>Fri, 29 Mar 2019 02:09:00 +0800</pubDate>
-      
-      <guid>https://spaceboundr.github.io/posts/hello-world/</guid>
-      <description>Hello World！你好 世界！
-在以往的日子里不知道写过多少个Hello World，这个博客对我来说也是一个新的开始，我会坚持把这个博客写下去，记录生活，分享知识。
-我是召唤兽。
-&amp;ndash;2019.03.29 02:09 于KM </description>
     </item>
     
   </channel>

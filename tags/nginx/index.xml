@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>技术 on SpaceBound</title>
-    <link>https://spaceboundr.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
-    <description>Recent content in 技术 on SpaceBound</description>
+    <title>Nginx on SpaceBound</title>
+    <link>https://spaceboundr.github.io/tags/nginx/</link>
+    <description>Recent content in Nginx on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Apr 2019 12:23:00 +0800</lastBuildDate>
     
-	<atom:link href="https://spaceboundr.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://spaceboundr.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -28,33 +28,6 @@ Secret webhook请求时在head中附加的密钥，之后会使用到需记住�
 服务端使用NodeJs构建WebHook服务 创建NodeJs服务 服务器需要安装NodeJs，然后执行命令
 npm install http-server -g npm install github-webhook-handler -g  来安装http-server和github-webhook-handler中间件，在项目根目录下新建webhook.js
 var http = require(&#39;http&#39;) var createHandler = require(&#39;github-webhook-handler&#39;) var handler = createHandler({ path: &#39;/&#39;, secret: &#39;test6666&#39; }) // 上面的 secret 保持和 GitHub 后台设置的一致 http.createServer(function (req, res) { handler(req, res, function (err) { res.statusCode = 404 res.end(&#39;no such location&#39;) }) }).</description>
-    </item>
-    
-    <item>
-      <title>使用Shell命令生成HuGo网站并提交至GitHub</title>
-      <link>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
-      <pubDate>Sat, 13 Apr 2019 14:09:00 +0800</pubDate>
-      
-      <guid>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
-      <description>在blog目录新建一个deploy.sh文件，将生成和上传的命令写在文件里，每次写完文章，直接运行deploy.sh即可。
-例如我的deploy.sh
-#!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; #移动到public cd public #删除public中除了.git的其他内容 rm -rf `ls |egrep -v &#39;(.git)&#39;` #移动到上一层，执行hugo命令生成静态网站 cd .. hugo -t LeaveIt #将README.md文件移动到public中 cp README.md public #移动到public cd public #执行git命令上传至github git add . msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi git commit -m &amp;quot;$msg&amp;quot; git push origin master cd ..  使用
-deploy.sh &amp;quot;message&amp;quot;  </description>
-    </item>
-    
-    <item>
-      <title>使用Valine评论系统</title>
-      <link>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</link>
-      <pubDate>Sun, 31 Mar 2019 02:09:00 +0800</pubDate>
-      
-      <guid>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</guid>
-      <description>博客需要一个评论插件，网上搜索过后发现Valine就是我想要的。
- Valine - 一款快速、简洁且高效的无后端评论系统。
-Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。
-理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。
- Valine官网上有详细的使 用教程，只需要进行相应配置
- 注册Leancloud账户，创建应用，获取APP ID和APP Key 将html和js代码插入博客相应位置  重新发布HuGo即可看到评论功能
-  快来文章末尾评论吧！</description>
     </item>
     
   </channel>

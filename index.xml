@@ -6,8 +6,211 @@
     <description>Recent content in SpaceBound on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Apr 2019 13:15:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 12:23:00 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新</title>
+      <link>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</link>
+      <pubDate>Sun, 14 Apr 2019 12:23:00 +0800</pubDate>
+      
+      <guid>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</guid>
+      <description>
+
+&lt;p&gt;最近为博客申请了一个域名&lt;a href=&#34;https://www.spacebound.xyz&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;spacebound.xyz&lt;/a&gt;还在备案中，等备案完成就能通过域名访问本站，刚好手上有一台闲置的腾讯云服务器，就考虑将博客代码部署到服务器上。&lt;br /&gt;
+服务器选择的是windows环境，&lt;del&gt;.Net程序员后遗症+对Linux不熟&lt;/del&gt; 使用&lt;code&gt;Nginx&lt;/code&gt;部署静态网站。按照传统的方式，在本地编辑、发布成静态资源以后还要远程桌面或者ftp/sftp上传至服务器，这样做太过麻烦，我想要更加自动化的方式实现。&lt;br /&gt;
+经过一番资料查找后发现&lt;a href=&#34;https://developer.github.com/webhooks/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;GitHub的&lt;code&gt;WebHooks&lt;/code&gt;&lt;/a&gt;可以很方便的实现代码自动化管理，只要在GitHub相应库中设置好WebHooks，服务端使用&lt;code&gt;NodeJs&lt;/code&gt;来构Webhook服务，就可以轻松的实现&lt;strong&gt;提交git时服务器自动更新代码完成部署&lt;/strong&gt;。&lt;br /&gt;
+具体实现如下：&lt;/p&gt;
+
+&lt;h2 id=&#34;github的webhooks设置&#34;&gt;GitHub的WebHooks设置&lt;/h2&gt;
+
+&lt;p&gt;打开你要进行自动化部署的项目的GiHub仓库地址，进入Settings设置页面，点击左侧的Webhooks&lt;br /&gt;
+&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/2019041401.png&#34;&gt;
+点击Add webhook，添加一个webhook
+&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/2019041402.png&#34;&gt;
+&lt;code&gt;Payload URL&lt;/code&gt; 填写你项目的域名或服务器IP地址加端口号，例如： &lt;strong&gt;https：www.spacebound.xyz:6666&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;Content type&lt;/code&gt; 选择application/json&lt;br /&gt;
+&lt;code&gt;Secret&lt;/code&gt; webhook请求时在head中附加的密钥，之后会使用到&lt;strong&gt;需记住&lt;/strong&gt;。例如： &lt;strong&gt;test6666&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;服务端使用nodejs构建webhook服务&#34;&gt;服务端使用NodeJs构建WebHook服务&lt;/h2&gt;
+
+&lt;h3 id=&#34;创建nodejs服务&#34;&gt;创建NodeJs服务&lt;/h3&gt;
+
+&lt;p&gt;服务器需要安装&lt;code&gt;NodeJs&lt;/code&gt;，然后执行命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-npm&#34;&gt;npm install http-server -g
+npm install github-webhook-handler -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;来安装http-server和github-webhook-handler中间件，在项目根目录下新建&lt;code&gt;webhook.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-nodejs&#34;&gt;var http = require(&#39;http&#39;)
+var createHandler = require(&#39;github-webhook-handler&#39;)
+var handler = createHandler({ path: &#39;/&#39;, secret: &#39;test6666&#39; })
+// 上面的 secret 保持和 GitHub 后台设置的一致
+http.createServer(function (req, res) {
+  handler(req, res, function (err) {
+    res.statusCode = 404
+    res.end(&#39;no such location&#39;)
+  })
+}).listen(6666)
+//监听6666端口
+handler.on(&#39;error&#39;, function (err) {
+  console.error(&#39;Error:&#39;, err.message)
+})
+handler.on(&#39;push&#39;, function (event) {
+  console.log(&#39;Received a push event for %s to %s&#39;,
+    event.payload.repository.name,
+    event.payload.ref);
+	
+  const spawn = require(&#39;child_process&#39;).spawn;
+    //const cmd = &#39;git pull origin master&#39;;
+    //const p = spawn(cmd, [], {shell: true});
+    const p = spawn(&#39;deploy.sh&#39;, [], {shell: true})
+
+  p.stdout.on (&#39;data&#39;, (data) =&amp;gt; {
+		console.log (data.toString ());
+	});
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-nodejs&#34;&gt;const spawn = require(&#39;child_process&#39;).spawn;
+    //const cmd = &#39;git pull origin master&#39;;
+    //const p = spawn(cmd, [], {shell: true});
+    const p = spawn(&#39;deploy.sh&#39;, [], {shell: true})
+
+  p.stdout.on (&#39;data&#39;, (data) =&amp;gt; {
+		console.log (data.toString ());
+	});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;这个部分是使用NodeJs的子进程&lt;a href=&#34;http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;child_process&lt;/a&gt;来执行shell脚本。这个地方踩了很多坑，由于对NodeJs不是很熟只能现学现用，官方API虽然对这个方法参数名有详细注解，但对于实际参数怎么写没有提供示例。&lt;br /&gt;
+百度上查到的教程和例子都千篇一律 &lt;del&gt;&lt;strong&gt;强烈吐槽百度&lt;/strong&gt;&lt;/del&gt;，只有介绍shell基础命令怎么使用，没有关于git命令和调用.sh文件的示例。最后还是在&lt;code&gt;stackoverflow&lt;/code&gt;上的相关问题中找到了&lt;a href=&#34;https://stackoverflow.com/questions/9777215/running-a-shell-command-from-node-js-without-buffering-output&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;答案&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;创建shell脚本&#34;&gt;创建Shell脚本&lt;/h3&gt;
+
+&lt;p&gt;先在网站根目录创建Git文件控制，添加远程Git仓库地址&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
+git init
+git remote add origin https://xxx.git 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后创建&lt;code&gt;deploy.sh&lt;/code&gt;，和&lt;code&gt;webhook.js&lt;/code&gt;处于同一目录下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
+echo &amp;quot;start deployment&amp;quot;
+git pull origin master
+git reset --hard master
+echo &amp;quot;done&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;到这里就可以使用&lt;code&gt;nodejs webhook.js&lt;/code&gt;命令将服务启动。&lt;/p&gt;
+
+&lt;h2 id=&#34;使用pm2进行进程守护&#34;&gt;使用pm2进行进程守护&lt;/h2&gt;
+
+&lt;p&gt;PM2是node进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，如性能监控、自动重启、负载均衡等，而且使用非常简单。&lt;a href=&#34;http://www.cnblogs.com/chyingp/p/pm2-documentation.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;引用&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;pm2安装&#34;&gt;pm2安装&lt;/h3&gt;
+
+&lt;p&gt;执行命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-npm&#34;&gt;npm i pm2 -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;启动&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-npm&#34;&gt;pm2 start webhook.js --watch -i 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;pm2在windows服务器下开启自动开启服务&#34;&gt;pm2在windows服务器下开启自动开启服务&lt;/h3&gt;
+
+&lt;p&gt;在安装好pm2的基础上，执行命令安装pm2-windows-service和pm2-windows-startup中间件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-nodejs&#34;&gt;npm install pm2-windows-service -g
+npm install pm2-windows-startup -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加.pm2的系统环境变量&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;PM2_HOME=C:\Users\Administrator\.pm2(路径默认在当前用户下的.pm2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以管理员身份运行cmd,执行以下命令安装服务&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-npm&#34;&gt;pm2-service-install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;提示Perform environment setup?时选n，回车继续。此时PM2服务已安装成功并已启动，（如果没启动请自行到Windows服务处启动服务）名称为PM2&lt;br /&gt;
+&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/pm2-20190414114939.png&#34;&gt;&lt;br /&gt;
+打开cmd，移动到项目更目录下，执行命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-npm&#34;&gt;pm2 start webhook.js -n myBlog
+pm2 save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/PM2-20190414115636.png&#34;&gt;&lt;br /&gt;
+&lt;code&gt;pm2 save&lt;/code&gt; 十分重要, 它保存当前pm2正在管理的NodeJS服务, 并在开机后恢复这些服务，保存路径为系统环境变量设置的PM2_HOME路径。
+&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/pm2-20190414112729.png&#34;&gt;&lt;br /&gt;
+重启服务器后输入命令查看pm2列表，发现myBlog服务已启动，至此，开机自动启动配置完成。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-npm&#34;&gt;pm2 list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190414/pm2-20190414120232.png&#34;&gt;&lt;br /&gt;
+&lt;br/&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;结束语：&lt;/strong&gt;该项&lt;code&gt;hook&lt;/code&gt;技术不仅适用于Github、Gitlab、Gitee等线在上仓库，也可以在自己搭建的git服务器实现，在实际的项目中使用可以达到生产环境代码自动部署的目的。动手过程中有什么不清楚的地方可以在文章下方留言或者微信联系我，共同讨论 ：)&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用Shell命令生成HuGo网站并提交至GitHub</title>
+      <link>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
+      <pubDate>Sat, 13 Apr 2019 14:09:00 +0800</pubDate>
+      
+      <guid>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
+      <description>&lt;p&gt;在blog目录新建一个deploy.sh文件，将生成和上传的命令写在文件里，每次写完文章，直接运行deploy.sh即可。&lt;br /&gt;
+例如我的deploy.sh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;
+#移动到public
+cd public
+#删除public中除了.git的其他内容
+rm -rf `ls |egrep -v &#39;(.git)&#39;`
+#移动到上一层，执行hugo命令生成静态网站
+cd ..
+hugo -t LeaveIt  
+#将README.md文件移动到public中
+cp README.md public
+#移动到public
+cd public
+#执行git命令上传至github
+git add .
+msg=&amp;quot;rebuilding site `date`&amp;quot;
+if [ $# -eq 1 ]
+  then msg=&amp;quot;$1&amp;quot;
+fi
+git commit -m &amp;quot;$msg&amp;quot;
+git push origin master
+cd ..
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cmd&#34;&gt;deploy.sh &amp;quot;message&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>认真改变世界</title>
@@ -15,21 +218,19 @@
       <pubDate>Fri, 12 Apr 2019 13:15:00 +0800</pubDate>
       
       <guid>https://spaceboundr.github.io/posts/change-the-world-seriously/</guid>
-      <description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190412/wx20190413003058.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190412/wx20190413003058.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;2018-4-21-于云南昆明m60创意园南域之声&#34;&gt;&amp;ndash; 2018.4.21 于云南昆明M60创意园南域之声&lt;/h4&gt;
+&lt;p&gt;&amp;ndash; 2018.4.21 于云南昆明M60创意园南域之声&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>HuGo使用Valine评论插件</title>
-      <link>https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/</link>
+      <title>使用Valine评论系统</title>
+      <link>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</link>
       <pubDate>Sun, 31 Mar 2019 02:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/hugo-uses-the-valine-comment-plugin.1/</guid>
-      <description>&lt;p&gt;&amp;emsp;&amp;emsp;博客需要一个评论插件，网上搜索过后发现&lt;a href=&#34;https://valine.js.org/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Valine&lt;/a&gt;就是我想要的。&lt;/p&gt;
+      <guid>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</guid>
+      <description>&lt;p&gt;博客需要一个评论插件，网上搜索过后发现&lt;a href=&#34;https://valine.js.org/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Valine&lt;/a&gt;就是我想要的。&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Valine - 一款快速、简洁且高效的无后端评论系统。&lt;br /&gt;
@@ -37,7 +238,7 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&amp;emsp;&amp;emsp;Valine官网上有详细的使用教程，只需要进行相应配置&lt;/p&gt;
+&lt;p&gt;Valine官网上有详细的使 用教程，只需要进行相应配置&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;注册Leancloud账户，创建应用，获取APP ID和APP Key&lt;/li&gt;
@@ -46,7 +247,7 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 &lt;li&gt;重新发布HuGo即可看到评论功能&lt;br /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&amp;emsp;&amp;emsp;快来文章末尾评论吧！&lt;/p&gt;
+&lt;p&gt;快来文章末尾评论吧！&lt;/p&gt;
 </description>
     </item>
     
@@ -56,10 +257,10 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
       <pubDate>Fri, 29 Mar 2019 02:09:00 +0800</pubDate>
       
       <guid>https://spaceboundr.github.io/posts/hello-world/</guid>
-      <description>&lt;p&gt;&amp;emsp;&amp;emsp;Hello World！你好 世界！&lt;br /&gt;
-&amp;emsp;&amp;emsp;在以往的日子里不知道写过多少个Hello World，这个博客对我来说也是一个新的开始，我会坚持把这个博客写下去，记录生活，分享知识。&lt;br /&gt;
-&amp;emsp;&amp;emsp;我是召唤兽。&lt;br /&gt;
-&amp;emsp;&amp;emsp;-2019.03.29 02:09 于KM
+      <description>&lt;p&gt;Hello World！你好 世界！&lt;br /&gt;
+在以往的日子里不知道写过多少个Hello World，这个博客对我来说也是一个新的开始，我会坚持把这个博客写下去，记录生活，分享知识。&lt;br /&gt;
+我是召唤兽。&lt;br /&gt;
+&amp;ndash;2019.03.29 02:09 于KM
 &lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190329/20190329020700.jpg&#34; width=&#34;450&#34; height=&#34;450&#34;&gt;&lt;/p&gt;
 </description>
     </item>
