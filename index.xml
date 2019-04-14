@@ -89,7 +89,7 @@ handler.on(&#39;push&#39;, function (event) {
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;这个部分是使用NodeJs的子进程&lt;a href=&#34;http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;child_process&lt;/a&gt;来执行shell脚本。这个地方踩了很多坑，由于对NodeJs不是很熟只能现学现用，官方API虽然对这个方法参数名有详细注解，但对于实际参数怎么写没有提供示例。&lt;br /&gt;
+&lt;p&gt;这个部分是使用NodeJs的子进程&lt;a href=&#34;http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;child_process&lt;/code&gt;&lt;/a&gt;来执行shell脚本。这个地方踩了很多坑，由于对NodeJs不是很熟只能现学现用，官方API虽然对这个方法参数名有详细注解，但对于实际参数怎么写没有提供示例。&lt;br /&gt;
 百度上查到的教程和例子都千篇一律 &lt;del&gt;&lt;strong&gt;强烈吐槽百度&lt;/strong&gt;&lt;/del&gt;，只有介绍shell基础命令怎么使用，没有关于git命令和调用.sh文件的示例。最后还是在&lt;code&gt;stackoverflow&lt;/code&gt;上的相关问题中找到了&lt;a href=&#34;https://stackoverflow.com/questions/9777215/running-a-shell-command-from-node-js-without-buffering-output&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;答案&lt;/a&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 
