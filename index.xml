@@ -174,10 +174,10 @@ pm2 save
     
     <item>
       <title>使用Shell命令生成HuGo网站并提交至GitHub</title>
-      <link>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
+      <link>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github/</link>
       <pubDate>Sat, 13 Apr 2019 14:09:00 +0800</pubDate>
       
-      <guid>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
+      <guid>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github/</guid>
       <description>&lt;p&gt;在blog目录新建一个deploy.sh文件，将生成和上传的命令写在文件里，每次写完文章，直接运行deploy.sh即可。&lt;br /&gt;
 例如我的deploy.sh&lt;/p&gt;
 
