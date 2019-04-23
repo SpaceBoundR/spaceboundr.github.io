@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hello World on SpaceBound</title>
-    <link>https://spaceboundr.github.io/tags/hello-world/</link>
+    <link>https://www.spacebound.xyz/tags/hello-world/</link>
     <description>Recent content in Hello World on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Mar 2019 02:09:00 +0800</lastBuildDate>
     
-	<atom:link href="https://spaceboundr.github.io/tags/hello-world/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.spacebound.xyz/tags/hello-world/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello World</title>
-      <link>https://spaceboundr.github.io/posts/hello-world/</link>
+      <link>https://www.spacebound.xyz/posts/hello-world/</link>
       <pubDate>Fri, 29 Mar 2019 02:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/hello-world/</guid>
+      <guid>https://www.spacebound.xyz/posts/hello-world/</guid>
       <description>Hello World！你好 世界！
 在以往的日子里不知道写过多少个Hello World，这个博客对我来说也是一个新的开始，我会坚持把这个博客写下去，记录生活，分享知识。
 我是召唤兽。

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HuGo on SpaceBound</title>
-    <link>https://spaceboundr.github.io/tags/hugo/</link>
+    <link>https://www.spacebound.xyz/tags/hugo/</link>
     <description>Recent content in HuGo on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Apr 2019 12:23:00 +0800</lastBuildDate>
     
-	<atom:link href="https://spaceboundr.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.spacebound.xyz/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新</title>
-      <link>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</link>
+      <link>https://www.spacebound.xyz/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</link>
       <pubDate>Sun, 14 Apr 2019 12:23:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</guid>
+      <guid>https://www.spacebound.xyz/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</guid>
       <description>最近为博客申请了一个域名spacebound.xyz还在备案中，等备案完成就能通过域名访问本站，刚好手上有一台闲置的腾讯云服务器，就考虑将博客代码部署到服务器上。
 服务器选择的是windows环境，.Net程序员后遗症+对Linux不熟 使用Nginx部署静态网站。按照传统的方式，在本地编辑、发布成静态资源以后还要远程桌面或者ftp/sftp上传至服务器，这样做太过麻烦，我想要更加自动化的方式实现。
 经过一番资料查找后发现GitHub的WebHooks可以很方便的实现代码自动化管理，只要在GitHub相应库中设置好WebHooks，服务端使用NodeJs来构Webhook服务，就可以轻松的实现提交git时服务器自动更新代码完成部署。
@@ -32,10 +32,10 @@ var http = require(&#39;http&#39;) var createHandler = require(&#39;github-webho
     
     <item>
       <title>使用Shell命令生成HuGo网站并提交至GitHub</title>
-      <link>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
+      <link>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
       <pubDate>Sat, 13 Apr 2019 14:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
+      <guid>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
       <description>在blog目录新建一个deploy.sh文件，将生成和上传的命令写在文件里，每次写完文章，直接运行deploy.sh即可。
 例如我的deploy.sh
 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; #移动到public cd public #删除public中除了.git的其他内容 rm -rf `ls |egrep -v &#39;(.git)&#39;` #移动到上一层，执行hugo命令生成静态网站 cd .. hugo -t LeaveIt #将README.md文件移动到public中 cp README.md public #移动到public cd public #执行git命令上传至github git add . msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi git commit -m &amp;quot;$msg&amp;quot; git push origin master cd ..  使用
@@ -44,10 +44,10 @@ deploy.sh &amp;quot;message&amp;quot;  </description>
     
     <item>
       <title>使用Valine评论系统</title>
-      <link>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</link>
+      <link>https://www.spacebound.xyz/posts/uses-the-valine-comment-system/</link>
       <pubDate>Sun, 31 Mar 2019 02:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</guid>
+      <guid>https://www.spacebound.xyz/posts/uses-the-valine-comment-system/</guid>
       <description>博客需要一个评论插件，网上搜索过后发现Valine就是我想要的。
  Valine - 一款快速、简洁且高效的无后端评论系统。
 Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。

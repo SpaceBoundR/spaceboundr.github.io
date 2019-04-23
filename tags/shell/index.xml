@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shell on SpaceBound</title>
-    <link>https://spaceboundr.github.io/tags/shell/</link>
+    <link>https://www.spacebound.xyz/tags/shell/</link>
     <description>Recent content in Shell on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Apr 2019 14:09:00 +0800</lastBuildDate>
     
-	<atom:link href="https://spaceboundr.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.spacebound.xyz/tags/shell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用Shell命令生成HuGo网站并提交至GitHub</title>
-      <link>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
+      <link>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
       <pubDate>Sat, 13 Apr 2019 14:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
+      <guid>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
       <description>在blog目录新建一个deploy.sh文件，将生成和上传的命令写在文件里，每次写完文章，直接运行deploy.sh即可。
 例如我的deploy.sh
 #!/bin/bash echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot; #移动到public cd public #删除public中除了.git的其他内容 rm -rf `ls |egrep -v &#39;(.git)&#39;` #移动到上一层，执行hugo命令生成静态网站 cd .. hugo -t LeaveIt #将README.md文件移动到public中 cp README.md public #移动到public cd public #执行git命令上传至github git add . msg=&amp;quot;rebuilding site `date`&amp;quot; if [ $# -eq 1 ] then msg=&amp;quot;$1&amp;quot; fi git commit -m &amp;quot;$msg&amp;quot; git push origin master cd ..  使用

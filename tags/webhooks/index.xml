@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WebHooks on SpaceBound</title>
-    <link>https://spaceboundr.github.io/tags/webhooks/</link>
+    <link>https://www.spacebound.xyz/tags/webhooks/</link>
     <description>Recent content in WebHooks on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Apr 2019 12:23:00 +0800</lastBuildDate>
     
-	<atom:link href="https://spaceboundr.github.io/tags/webhooks/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.spacebound.xyz/tags/webhooks/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新</title>
-      <link>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</link>
+      <link>https://www.spacebound.xyz/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</link>
       <pubDate>Sun, 14 Apr 2019 12:23:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</guid>
+      <guid>https://www.spacebound.xyz/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</guid>
       <description>最近为博客申请了一个域名spacebound.xyz还在备案中，等备案完成就能通过域名访问本站，刚好手上有一台闲置的腾讯云服务器，就考虑将博客代码部署到服务器上。
 服务器选择的是windows环境，.Net程序员后遗症+对Linux不熟 使用Nginx部署静态网站。按照传统的方式，在本地编辑、发布成静态资源以后还要远程桌面或者ftp/sftp上传至服务器，这样做太过麻烦，我想要更加自动化的方式实现。
 经过一番资料查找后发现GitHub的WebHooks可以很方便的实现代码自动化管理，只要在GitHub相应库中设置好WebHooks，服务端使用NodeJs来构Webhook服务，就可以轻松的实现提交git时服务器自动更新代码完成部署。

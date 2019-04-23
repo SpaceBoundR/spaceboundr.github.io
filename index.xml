@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SpaceBound on SpaceBound</title>
-    <link>https://spaceboundr.github.io/</link>
+    <link>https://www.spacebound.xyz/</link>
     <description>Recent content in SpaceBound on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>使用GitHub的WebHooks&#43;NodeJs实现生产环境代码自动更新</title>
-      <link>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</link>
+      <link>https://www.spacebound.xyz/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</link>
       <pubDate>Sun, 14 Apr 2019 12:23:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</guid>
+      <guid>https://www.spacebound.xyz/posts/automatic-production-environment-code-update-using-github-webhooks-and-nodejs/</guid>
       <description>
 
 &lt;p&gt;最近为博客申请了一个域名&lt;a href=&#34;https://www.spacebound.xyz&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;spacebound.xyz&lt;/a&gt;还在备案中，等备案完成就能通过域名访问本站，刚好手上有一台闲置的腾讯云服务器，就考虑将博客代码部署到服务器上。&lt;br /&gt;
@@ -174,10 +174,10 @@ pm2 save
     
     <item>
       <title>使用Shell命令生成HuGo网站并提交至GitHub</title>
-      <link>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
+      <link>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</link>
       <pubDate>Sat, 13 Apr 2019 14:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
+      <guid>https://www.spacebound.xyz/posts/use-the-shell-command-to-automatically-publish-the-hugo-website-and-upload-it-to-github.1/</guid>
       <description>&lt;p&gt;在blog目录新建一个deploy.sh文件，将生成和上传的命令写在文件里，每次写完文章，直接运行deploy.sh即可。&lt;br /&gt;
 例如我的deploy.sh&lt;/p&gt;
 
@@ -214,10 +214,10 @@ cd ..
     
     <item>
       <title>认真改变世界</title>
-      <link>https://spaceboundr.github.io/posts/change-the-world-seriously/</link>
+      <link>https://www.spacebound.xyz/posts/change-the-world-seriously/</link>
       <pubDate>Fri, 12 Apr 2019 13:15:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/change-the-world-seriously/</guid>
+      <guid>https://www.spacebound.xyz/posts/change-the-world-seriously/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://rxwblog-1252097820.cos.ap-guangzhou.myqcloud.com/blog/20190412/wx20190413003058.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;&amp;ndash; 2018.4.21 于云南昆明M60创意园南域之声&lt;/p&gt;
@@ -226,10 +226,10 @@ cd ..
     
     <item>
       <title>使用Valine评论系统</title>
-      <link>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</link>
+      <link>https://www.spacebound.xyz/posts/uses-the-valine-comment-system/</link>
       <pubDate>Sun, 31 Mar 2019 02:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/uses-the-valine-comment-system/</guid>
+      <guid>https://www.spacebound.xyz/posts/uses-the-valine-comment-system/</guid>
       <description>&lt;p&gt;博客需要一个评论插件，网上搜索过后发现&lt;a href=&#34;https://valine.js.org/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Valine&lt;/a&gt;就是我想要的。&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -253,10 +253,10 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
     
     <item>
       <title>Hello World</title>
-      <link>https://spaceboundr.github.io/posts/hello-world/</link>
+      <link>https://www.spacebound.xyz/posts/hello-world/</link>
       <pubDate>Fri, 29 Mar 2019 02:09:00 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/posts/hello-world/</guid>
+      <guid>https://www.spacebound.xyz/posts/hello-world/</guid>
       <description>&lt;p&gt;Hello World！你好 世界！&lt;br /&gt;
 在以往的日子里不知道写过多少个Hello World，这个博客对我来说也是一个新的开始，我会坚持把这个博客写下去，记录生活，分享知识。&lt;br /&gt;
 我是召唤兽。&lt;br /&gt;
@@ -267,10 +267,10 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
     
     <item>
       <title>About</title>
-      <link>https://spaceboundr.github.io/about/</link>
+      <link>https://www.spacebound.xyz/about/</link>
       <pubDate>Thu, 28 Mar 2019 14:06:14 +0800</pubDate>
       
-      <guid>https://spaceboundr.github.io/about/</guid>
+      <guid>https://www.spacebound.xyz/about/</guid>
       <description>
 
 &lt;h2 id=&#34;关于我&#34;&gt;关于我&lt;/h2&gt;
