@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>生活 on SpaceBound</title>
-    <link>https://www.spacebound.xyz/categories/%E7%94%9F%E6%B4%BB/</link>
-    <description>Recent content in 生活 on SpaceBound</description>
+    <title>Life on SpaceBound</title>
+    <link>https://www.spacebound.xyz/categories/life/</link>
+    <description>Recent content in Life on SpaceBound</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Apr 2019 13:15:00 +0800</lastBuildDate>
     
-	<atom:link href="https://www.spacebound.xyz/categories/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.spacebound.xyz/categories/life/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

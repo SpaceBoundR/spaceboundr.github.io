@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://www.spacebound.xyz/posts/dragon-king-always-comes-to-drink-with-me/</loc>
+      
+      <lastmod>2019-11-02T12:00:00+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://www.spacebound.xyz/posts/abigail-happy-days/</loc>
       
       <lastmod>2019-08-22T02:09:00+08:00</lastmod>
@@ -131,6 +141,42 @@
     </url>
   
     <url>
+      <loc>https://www.spacebound.xyz/categories/life/</loc>
+      
+      <lastmod>2019-04-12T13:15:00+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.spacebound.xyz/categories/livehoues/</loc>
+      
+      <lastmod>2019-11-02T12:00:00+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.spacebound.xyz/categories/music/</loc>
+      
+      <lastmod>2019-08-22T02:09:00+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://www.spacebound.xyz/tags/nginx/</loc>
       
       <lastmod>2019-04-14T12:23:00+08:00</lastmod>
@@ -157,7 +203,19 @@
     <url>
       <loc>https://www.spacebound.xyz/posts/</loc>
       
-      <lastmod>2019-08-22T02:09:00+08:00</lastmod>
+      <lastmod>2019-11-02T12:00:00+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.spacebound.xyz/categories/program/</loc>
+      
+      <lastmod>2019-04-14T12:23:00+08:00</lastmod>
       
       
       
@@ -181,7 +239,7 @@
     <url>
       <loc>https://www.spacebound.xyz/</loc>
       
-      <lastmod>2019-08-22T02:09:00+08:00</lastmod>
+      <lastmod>2019-11-02T12:00:00+08:00</lastmod>
       
       
       
@@ -239,18 +297,6 @@
     </url>
   
     <url>
-      <loc>https://www.spacebound.xyz/categories/%E5%A3%B0%E9%9F%B3/</loc>
-      
-      <lastmod>2019-08-22T02:09:00+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://www.spacebound.xyz/tags/%E6%80%9D%E6%83%B3/</loc>
       
       <lastmod>2019-04-12T13:15:00+08:00</lastmod>
@@ -263,21 +309,9 @@
     </url>
   
     <url>
-      <loc>https://www.spacebound.xyz/categories/%E6%8A%80%E6%9C%AF/</loc>
+      <loc>https://www.spacebound.xyz/tags/%E6%9C%8B%E5%85%8B/</loc>
       
-      <lastmod>2019-04-14T12:23:00+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://www.spacebound.xyz/categories/%E7%94%9F%E6%B4%BB/</loc>
-      
-      <lastmod>2019-04-12T13:15:00+08:00</lastmod>
+      <lastmod>2019-11-02T12:00:00+08:00</lastmod>
       
       
       
@@ -290,6 +324,18 @@
       <loc>https://www.spacebound.xyz/tags/%E7%94%B5%E5%BD%B1%E5%8E%9F%E5%A3%B0/</loc>
       
       <lastmod>2019-08-22T02:09:00+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://www.spacebound.xyz/tags/%E9%92%A2%E5%BF%83%E4%B9%90%E9%98%9F/</loc>
+      
+      <lastmod>2019-11-02T12:00:00+08:00</lastmod>
       
       
       
